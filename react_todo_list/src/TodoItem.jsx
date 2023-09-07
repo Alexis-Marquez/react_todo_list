@@ -1,12 +1,12 @@
 import ListItem from "@mui/material/ListItem";
 import IconButton from "@mui/material/IconButton";
-import CommentIcon from "@mui/icons-material/Comment.js";
+import DeleteIcon from '@mui/icons-material/delete'
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 
-export default function TodoItem({todo, remove}){
+export default function TodoItem({todo, remove,toggle}){
 
     const removeTodo = () =>{
         remove(todo.id)
@@ -17,7 +17,7 @@ export default function TodoItem({todo, remove}){
         <ListItem
             secondaryAction={
                 <IconButton edge="end" aria-label="comments" onClick={removeTodo}>
-                    <CommentIcon />
+                    <DeleteIcon />
                 </IconButton>
             }
             disablePadding
@@ -30,6 +30,7 @@ export default function TodoItem({todo, remove}){
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ 'aria-labelledby': labelId }}
+                        onChange={toggle}
                     />
                 </ListItemIcon>
                 <ListItemText id={labelId} primary={todo.text} />
